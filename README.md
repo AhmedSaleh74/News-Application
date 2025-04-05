@@ -14,6 +14,11 @@ Users can view news headlines, brief descriptions, and full news articles by nav
 ✅ Opens full news details on a separate screen  
 ✅ Smooth scrolling with ListView and Slivers 
 
+## 📸 Screenshots
+
+| HomePage/GeneralNews                   | Categories                              | Select Category -> Push To This Page       |  
+|----------------------------------------|-----------------------------------------|--------------------------------------------|  
+| ![Home Page](assets/screenshots/1.png) | ![Categories](assets/screenshots/2.png) | ![Category Page](assets/screenshots/3.png) |  
 🛠 Tech Stack
 
 - Flutter (Dart)  

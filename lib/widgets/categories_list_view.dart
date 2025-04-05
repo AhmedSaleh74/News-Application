@@ -8,9 +8,7 @@ class CategoriesListView extends StatelessWidget {
     super.key,
     required this.images,
   });
-
   final List<CategoryModel> images;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +18,10 @@ class CategoriesListView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: images.length,
           itemBuilder: (context, index) {
-            return CategoryCard(img:images[index].image,catName: images[index].catName,);
+            return CategoryCard(
+              img:images[index].image,
+              catName: images[index].catName,
+            );
           }),
     );
   }

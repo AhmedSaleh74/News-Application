@@ -1,20 +1,43 @@
 import 'package:dio/dio.dart';
 import 'package:news_app/models/atricle_model.dart';
 
-class NewService{
+class NewService {
   final Dio dio;
-  const NewService(this.dio);
-  getNews()async{
-    final response = await dio.get(
-        'https://newsapi.org/v2/everything?q=general&apiKey=64cc2b11fb6f4fc8b221957a6217151c&language=ar',
-    );
-    Map<String,dynamic> jsonData = response.data;
-    final articles = jsonData['articles'];
-    var articleList;
-    for(var article in articles){
-      if(articles != null){
-        articleList.add(ArticleModel(image: article['urlToImage'], title:article['title'], subTitle: article['description'],source: Source(id: article['source']['id'], name: article['source']['name'])));
+  final String category;
+  const NewService({required this.dio,required this.category,});
+
+  Future<List<ArticleModel>?> getNews() async {
+    try {
+      final response = await dio.get(
+        'https://newsapi.org/v2/everything?q=$category&apiKey=64cc2b11fb6f4fc8b221957a6217151c&language=en',
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonData = response.data;
+
+        if (jsonData.containsKey('articles')) {
+          final articles = jsonData['articles'] as List;
+
+          List<ArticleModel> articleList = [];
+
+          for (var article in articles) {
+            articleList.add(
+              ArticleModel(
+                image: article['urlToImage'] ?? '',
+                title: article['title'] ?? 'No Title',
+                subTitle: article['description'] ?? 'No Description',
+              ),
+            );
+          }
+
+          print('✅ Successfully fetched ${articleList.length} articles.');
+          return articleList;
+        }
       }
+    } catch (e) {
+      print('❌ Error fetching news: $e');
     }
+
+    return [];
   }
 }
