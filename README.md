@@ -19,6 +19,7 @@ Users can view news headlines, brief descriptions, and full news articles by nav
 | HomePage/GeneralNews                   | Categories                              | Select Category -> Push To This Page       |  
 |----------------------------------------|-----------------------------------------|--------------------------------------------|  
 | ![Home Page](assets/screenshots/1.png) | ![Categories](assets/screenshots/2.png) | ![Category Page](assets/screenshots/3.png) |  
+
 🛠 Tech Stack
 
 - Flutter (Dart)  
